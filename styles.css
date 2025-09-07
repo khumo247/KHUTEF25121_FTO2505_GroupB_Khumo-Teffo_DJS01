@@ -1,0 +1,71 @@
+/* Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --bg:#f5f5f7; --text:#1d1d1f; --muted:#86868b; --card:#fff;
+  --border:#e5e7eb; --chip:#eef0f3; --overlay:rgba(0,0,0,.55);
+}
+body{ background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.6; }
+
+/* Top nav */
+.top-nav{ background:#fff; padding:16px 24px; border-bottom:1px solid #e0e0e0; position:sticky; top:0; z-index:50; }
+.nav-container{ max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+.nav-left{ display:flex; align-items:center; gap:12px; }
+.menu-btn,.profile-btn{ border:0; background:transparent; padding:6px; border-radius:8px; cursor:pointer; color:var(--text); }
+.menu-btn:hover,.profile-btn:hover{ background:var(--bg); }
+.logo{ font-weight:700; font-size:20px; }
+.logo span{ font-weight:400; }
+.nav-center{ flex:1; max-width:380px; margin:0 24px; }
+.search-bar{ position:relative; background:#f0f2f5; padding:6px 10px 6px 34px; border-radius:20px; }
+.search-bar svg{ position:absolute; top:50%; left:10px; transform:translateY(-50%); color:#86868b; }
+.search-bar input{ width:100%; border:0; background:transparent; outline:none; font-size:14px; color:var(--text); }
+
+/* Container + filters */
+.container{ max-width:1200px; margin:0 auto; padding:24px; }
+.filters{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+.filters-label{ color:var(--muted); }
+select{ appearance:auto; border:1px solid var(--border); border-radius:6px; padding:8px 10px; background:#fff; color:var(--text); font-size:14px; }
+
+/* Grid + cards */
+.podcast-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.podcast-card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,.04); transition:transform .2s, box-shadow .2s; cursor:pointer; }
+.podcast-card:hover{ transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.08); }
+.cover-placeholder{ width:100%; height:160px; border-radius:8px; background:#a0a6ae; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; margin-bottom:12px; }
+.podcast-info h2{ font-size:16px; font-weight:600; margin-bottom:6px; }
+.meta{ font-size:13px; color:#52525b; display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+.meta svg{ width:16px; height:16px; color:#6b7280; }
+.tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+.tag{ background:var(--chip); border:1px solid var(--border); border-radius:999px; padding:2px 8px; font-size:12px; color:#333; }
+.update{ color:var(--muted); font-size:13px; }
+
+/* Modal */
+.modal{ position:fixed; inset:0; background:var(--overlay); display:none; align-items:flex-start; justify-content:center; padding:32px 16px; }
+.modal.show{ display:flex; }
+.modal-panel{ width:min(860px,100%); background:#fff; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.2); position:relative; }
+.close-modal{ position:absolute; top:10px; right:12px; border:0; background:transparent; font-size:28px; line-height:1; cursor:pointer; color:#6b7280; }
+.modal-inner{ padding:24px; }
+.modal-title{ font-size:24px; font-weight:700; margin-bottom:16px; }
+.modal-top{ display:grid; grid-template-columns:180px 1fr; gap:24px; }
+.large-cover{ width:180px; height:180px; background:#a0a6ae; color:#fff; border-radius:8px; display:flex; align-items:center; justify-content:center; }
+.section-title{ font-weight:600; margin-bottom:8px; color:#111827; }
+.description{ color:#374151; margin-bottom:12px; }
+.modal-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+.modal-updated{ display:flex; align-items:center; gap:6px; color:#6b7280; font-size:14px; }
+
+.seasons{ margin-top:18px; }
+.seasons h3{ font-size:18px; margin-bottom:10px; }
+.season-list{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.season-row{ display:flex; justify-content:space-between; align-items:center; background:#fff; border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+.season-meta{ max-width:78%; }
+.season-title{ font-weight:600; margin-bottom:4px; }
+.season-desc{ color:#6b7280; font-size:13px; }
+.episodes-count{ color:#374151; font-size:14px; }
+
+/* Responsive */
+@media (max-width:1024px){ .podcast-grid{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:768px){
+  .nav-center{ display:none; }
+  .podcast-grid{ grid-template-columns:repeat(2,1fr); }
+  .modal-top{ grid-template-columns:1fr; }
+  .large-cover{ width:100%; height:200px; }
+}
+@media (max-width:560px){ .podcast-grid{ grid-template-columns:1fr; } }
